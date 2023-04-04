@@ -9,15 +9,15 @@
     <title>Blog website</title>
 </head>
 <body>
-    <header class="d-flex justify-content-between">
+    <header class="d-flex justify-content-between align-items-center">
         <div class="menu">
-            <a href="#"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
+            <a href="#"><img src="../images/menu.png" alt="huh" width="50" height="50"></a>
         </div>
         <a href="index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
         <div class="search">
             <form method="POST">
                 <input type="text" name="search" placeholder="Search...">
-                <a href=""><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
+                <a href=""><img src="../images/searchglass.png" alt="huh" width="30" height="30"></a>
             </form>
         </div>
     </header>
