@@ -11,13 +11,13 @@
 <body>
     <header class="d-flex justify-content-between">
         <div class="menu">
-            <img src="../images/huh.png" alt="huh" width="50" height="50">
+            <a href="#"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
         </div>
-        <img src="../images/huh.png" alt="huh" width="50" height="50">
+        <a href="index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
         <div class="search">
             <form method="POST">
                 <input type="text" name="search" placeholder="Search...">
-                <img src="../images/huh.png" alt="huh" width="50" height="50">
+                <a href=""><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
             </form>
         </div>
     </header>

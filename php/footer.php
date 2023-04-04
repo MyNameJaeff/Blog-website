@@ -3,7 +3,7 @@
             <button>Subscribe 1$/month</button>
         </div>
         <div class="websiteBox d-flex">
-            <img src="../images/huh.png" alt="huh" width="50" height="50">
+            <a href="index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
             <div class="websiteText">
                 <p>Website description</p>
             </div>
