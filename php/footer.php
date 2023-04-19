@@ -1,4 +1,4 @@
-    <footer class="d-flex justify-content-around fixed-bottom">
+    <footer class="d-flex justify-content-around">
         <div class="subscribeBox">
             <button>Subscribe 1$/month</button>
         </div>

@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
 include 'blogposter.php';
+$conn = new mysqli($servername, $username, $password, $dbname);
 if(isset($_POST['submitBlog'])){
     $author = $_POST['author'];
     $blogtitle = $_POST['blogTitle'];
