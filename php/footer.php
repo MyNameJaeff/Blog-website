@@ -9,9 +9,9 @@
             </div>
         </div>
         <div class="contactBox">
-            <p>Contact</p>
-            <p>Email</p>
-            <p>PhoneNr</p>
+            <a href="#">Contact</a><br>
+            <a href="#">Email</a><br>
+            <a href="#">PhoneNr</a>
         </div>
     </footer>
 </body>

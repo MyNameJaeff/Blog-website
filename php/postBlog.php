@@ -1,14 +1,14 @@
 <?php
 include 'header.php';
 include 'blogposter.php';
-$conn = new mysqli($servername, $username, $password, $dbname);
 if(isset($_POST['submitBlog'])){
+    $conn = new mysqli($servername, $username, $password, $dbname);
     $author = $_POST['author'];
     $blogtitle = $_POST['blogTitle'];
     $blogdescription = $_POST['blogDesc'];
     $blogtext = $_POST['blogText'];
     $images = $_FILES['file']['name'];
-    $sql = "INSERT INTO `blogpostings`(`author`, `blogtitle`, `blogdescription`, `blogtext`, `images`)
+    $sql = "INSERT INTO `blogposts`(`author`, `blogtitle`, `blogdescription`, `blogtext`, `images`)
                         VALUES ('$author', '$blogtitle','$blogdescription', '$blogtext', '../uploads/$images')";
     $result = $conn->query($sql);
     if($result == TRUE){
