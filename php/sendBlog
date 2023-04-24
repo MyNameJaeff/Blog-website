@@ -1,0 +1,8 @@
+<?php
+$author = $_POST['auth'];
+$title = $_POST['titl'];
+$description = $_POST['desc'];
+$text = $_POST['txt'];
+$filepath = $_POST['filepth'];
+echo($author, $title, $description, $text, $filepath);
+?>

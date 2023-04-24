@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 include 'blogposter.php';
-/*if(isset($_POST['submitBlog'])){
+if(isset($_POST['submitBlog'])){
     $conn = new mysqli($servername, $username, $password, $dbname);
     $author = $_POST['author'];
     $blogtitle = $_POST['blogTitle'];
@@ -17,20 +17,20 @@ include 'blogposter.php';
         echo("Error:".$sql."<br>".$conn->error);
     }
     $conn->close();
-}*/
+}
 ?>
 <div class="blogPostBox">
-    <form onsubmit="return checkinput();" method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         <div class="">
             <label for="author">Author:</label><br>
-            <input type="text" name="author" id="author"><br>
+            <input type="text" name="author" id="author" required><br>
             <label for="blogTitle">Blog title:</label><br>
-            <input type="text" name="blogTitle" id="blogTitle"><br>
+            <input type="text" name="blogTitle" id="blogTitle" required><br>
             <label for="blogDesc">Blog description:</label><br>
-            <input type="text" name="blogDesc" id="blogDesc"><br>
+            <input type="text" name="blogDesc" id="blogDesc" required><br>
         </div>
         <label for="blogText">Text:</label><br>
-        <input type="text" name="blogText" id="blogText"><br>
+        <input type="text" name="blogText" id="blogText" required><br>
         <div>
             <label for="image">Image:</label><br>
             <input type="file" name="file" id="file"><br>
@@ -38,11 +38,6 @@ include 'blogposter.php';
             <input type="submit" name="submitBlog" value="Submit">
         </div>
     </form>
-    <script>
-        function checkinput(){
-            return false;
-        }
-    </script>
 </div>
 <?php
 if(isset($_POST['submitBlog'])){
