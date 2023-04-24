@@ -9,7 +9,6 @@ $dbname = "blogwebsite";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 $sql = "CREATE TABLE IF NOT EXISTS blogposts (
     author VARCHAR(40) NOT NULL,
     blogtitle VARCHAR(50) PRIMARY KEY NOT NULL,
@@ -17,6 +16,10 @@ $sql = "CREATE TABLE IF NOT EXISTS blogposts (
     blogtext VARCHAR(1000) NOT NULL,
     images VARCHAR(100) NOT NULL
     )";
+if (!mysqli_query($conn, $sql)) {
+    die("Error creating table: " . mysqli_error($conn));
+}
+
 $sql = "CREATE TABLE IF NOT EXISTS logins (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(40) NOT NULL,

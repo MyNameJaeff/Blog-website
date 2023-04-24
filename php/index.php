@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+include 'blogposter.php';
 ?>
 <main>
     <a href="postBlog.php">Blog</a>
