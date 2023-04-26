@@ -10,6 +10,22 @@ if(isset($_POST['submitBlog'])){
     $images = $_FILES['file']['name'];
     $sql = "INSERT INTO `blogposts`(`author`, `blogtitle`, `blogdescription`, `blogtext`, `images`)
                         VALUES ('$author', '$blogtitle','$blogdescription', '$blogtext', '../uploads/$images')";
+    $blogfile = fopen("../blogs/$blogtitle.php", "w") or die("Unable to create blog");
+    $txt = 
+    "<main>
+    <div>
+    <a href='../php/index.php'>Go back</a>
+    </div>
+    <div>";
+    $txt .= "<h1>$blogtitle</h1>\n";
+    $txt .= "<h3>$author</h3>\n";
+    $txt .= "<p>$blogtext</p>\n";
+    $txt .= "<img src='../uploads/$images' alt='uploadedimage'>\n";
+    $txt .=
+    "</div>
+    </main>";
+    fwrite($blogfile, $txt);
+    fclose($blogfile);
     $result = $conn->query($sql);
     if($result == TRUE){
         echo("New record created succesfully");

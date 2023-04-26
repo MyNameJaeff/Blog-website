@@ -25,6 +25,7 @@ if(isset($_POST["login"])){
     $results = mysqli_query($conn, $sql);
     if(!empty(mysqli_num_rows($results))){
         echo("Success");
+        setcookie("user", $userinfo);
     }else{
         echo("Wrong");
     }
