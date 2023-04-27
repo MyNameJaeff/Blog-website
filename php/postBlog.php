@@ -1,9 +1,12 @@
 <?php
 include 'header.php';
 include 'blogposter.php';
+if(!isset($_COOKIE['user'])){
+    echo "<script>window.location.href='loginpage.php';</script>";
+}
 if(isset($_POST['submitBlog'])){
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $author = $_POST['author'];
+    $author = $_COOKIE["user"];   
     $blogtitle = $_POST['blogTitle'];
     $blogdescription = $_POST['blogDesc'];
     $blogtext = $_POST['blogText'];
@@ -12,7 +15,8 @@ if(isset($_POST['submitBlog'])){
                         VALUES ('$author', '$blogtitle','$blogdescription', '$blogtext', '../uploads/$images')";
     $blogfile = fopen("../blogs/$blogtitle.php", "w") or die("Unable to create blog");
     $txt = 
-    "<main>
+    "<?php include '../php/header.php'; ?>
+    <main>
     <div>
     <a href='../php/index.php'>Go back</a>
     </div>
@@ -20,10 +24,11 @@ if(isset($_POST['submitBlog'])){
     $txt .= "<h1>$blogtitle</h1>\n";
     $txt .= "<h3>$author</h3>\n";
     $txt .= "<p>$blogtext</p>\n";
-    $txt .= "<img src='../uploads/$images' alt='uploadedimage'>\n";
+    $txt .= "<img src='../uploads/$images' alt='uploadedimage' width='200px'>\n";
     $txt .=
     "</div>
-    </main>";
+    </main>
+    <?php include '../php/footer.php'; ?>";
     fwrite($blogfile, $txt);
     fclose($blogfile);
     $result = $conn->query($sql);
@@ -38,15 +43,13 @@ if(isset($_POST['submitBlog'])){
 <div class="blogPostBox">
     <form method="POST" enctype="multipart/form-data">
         <div class="">
-            <label for="author">Author:</label><br>
-            <input type="text" name="author" id="author" required><br>
             <label for="blogTitle">Blog title:</label><br>
-            <input type="text" name="blogTitle" id="blogTitle" required><br>
+            <input type="text" name="blogTitle" id="blogTitle" placeholder="What's the title of your blog? (special)" required><br>
             <label for="blogDesc">Blog description:</label><br>
-            <input type="text" name="blogDesc" id="blogDesc" required><br>
+            <input type="text" name="blogDesc" id="blogDesc" placeholder="Describe your blog" required><br>
         </div>
         <label for="blogText">Text:</label><br>
-        <input type="text" name="blogText" id="blogText" required><br>
+        <input type="text" name="blogText" id="blogText" placeholder="Context of your blog" required><br>
         <div>
             <label for="image">Image:</label><br>
             <input type="file" name="file" id="file"><br>

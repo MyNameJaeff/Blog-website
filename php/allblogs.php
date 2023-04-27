@@ -17,7 +17,6 @@ if($result->num_rows > 0){
         $row["author"] . "</h3>" . "<h2>" .
         $row["blogtitle"] . "</h2><p>" . 
         $row["blogdescription"] . "</p></div><br></a>";
-        
     }
 }else{
     echo "0 results";

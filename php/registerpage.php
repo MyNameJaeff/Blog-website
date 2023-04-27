@@ -44,6 +44,11 @@ if(isset($_POST['register'])){
             $result = $conn->query($sql);
             if($result == TRUE){
                 echo("New record created succesfully");
+                $temp_name = $_FILES['profilepic']['tmp_name'];
+                $location = '../uploads/';
+                move_uploaded_file($temp_name, $location.$profilepic);
+                setcookie('user', $username);
+                header("index.php");
             }else{
                 echo("Error:".$sql."<br>".$conn->error);
             }
@@ -56,7 +61,6 @@ if(isset($_POST['register'])){
         echo("email is already registered");
     }
     $conn->close();
-    header("index.php");
 }
 include "footer.php";
 
