@@ -9,9 +9,23 @@
     <title>Blog website</title>
 </head>
 <body>
-    <header class="d-flex justify-content-between align-items-center">
-        <div class="menu">
-            <a href="#"><img src="../images/menu.png" alt="huh" width="50" height="50"></a>
+    <header class="d-flex justify-content-between align-items-center" style="border-bottom:1px solid black; padding:1px;">
+        <div class="dropdown">
+            <button onclick="popMenu()" class="btn dropbtn" style=""><img src="../images/menu.png" alt="huh" width="50" height="50" style="pointer-events:none;"></button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="postBlog.php">Blog</a>
+                <a href="allblogs.php">All blogs</a>
+                <a href="loginpage.php">Login</a>
+                <a href="registerpage.php">Register</a>
+                <?php
+                if(isset($_COOKIE['user'])){
+                    echo('
+                    <form method="post">
+                        <input type="submit" value="log out" name="logout">
+                    </form>');
+                }
+                ?>
+            </div>
         </div>
         <a href="index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
         <div class="search">
@@ -21,3 +35,21 @@
             </form>
         </div>
     </header>
+    <script>
+        function popMenu(){
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
