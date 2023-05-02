@@ -1,3 +1,4 @@
+<main>
 <?php
 include 'header.php';
 include 'blogposter.php';     
@@ -24,6 +25,8 @@ if($result->num_rows > 0){
 $table .= "</div>";
 echo $table;
 $conn->close();
-
+?>
+</main>
+<?php
 include 'footer.php';
 ?>

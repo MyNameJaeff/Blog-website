@@ -15,14 +15,21 @@
             <div id="myDropdown" class="dropdown-content">
                 <a href="postBlog.php">Blog</a>
                 <a href="allblogs.php">All blogs</a>
-                <a href="loginpage.php">Login</a>
-                <a href="registerpage.php">Register</a>
                 <?php
                 if(isset($_COOKIE['user'])){
+                    echo "<a href='userpage.php'>User page</a>";
                     echo('
                     <form method="post">
-                        <input type="submit" value="log out" name="logout">
+                        <input type="submit" value="Log out" name="logout" class="btn btn-outline-danger logoutbutton">
                     </form>');
+                }else{
+                    echo '<a href="loginpage.php">Login</a>';
+                    echo '<a href="registerpage.php">Register</a>';
+                }
+                if(isset($_POST["logout"])){
+                    unset($_COOKIE["user"]);
+                    setcookie('user', NULL);
+                    echo "<script>window.location.href='index.php';</script>";
                 }
                 ?>
             </div>

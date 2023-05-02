@@ -48,7 +48,7 @@ if(isset($_POST['register'])){
                 $location = '../uploads/';
                 move_uploaded_file($temp_name, $location.$profilepic);
                 setcookie('user', $username);
-                header("index.php");
+                header("userpage.php");
             }else{
                 echo("Error:".$sql."<br>".$conn->error);
             }

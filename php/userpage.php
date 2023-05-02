@@ -11,15 +11,15 @@ if(isset($_COOKIE['user'])){
     $result = $conn->query($sql);
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo($row['username']."<br>");
-            echo("<img src='".$row['profilepicture']."'>");
+            echo("<p class='usersusername'>".$row['username']."</p><br>");
+            echo("<img src='".$row['profilepicture']."' class='userprofilepic' width='200px'>");
         }
     }
-    echo "<div width='100%'; background-color:blue;>";
+    echo "<hr style='border: 3px solid black'>";
+    echo "<h2>All of $user's blogs: </h2>";
     $sql = "SELECT * FROM blogposts WHERE author='$user'";
     $result = $conn->query($sql);
     $table = "<div class='allposts d-flex'>";
-
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $table .= "<a href='../blogs/".$row["blogtitle"].".php' color='black'><div>" . "<img src='" .

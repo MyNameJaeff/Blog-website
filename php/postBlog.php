@@ -21,10 +21,10 @@ if(isset($_POST['submitBlog'])){
     <a href='../php/index.php'>Go back</a>
     </div>
     <div>";
-    $txt .= "<h1>$blogtitle</h1>\n";
-    $txt .= "<h3>$author</h3>\n";
-    $txt .= "<p>$blogtext</p>\n";
-    $txt .= "<img src='../uploads/$images' alt='uploadedimage' width='200px'>\n";
+    $txt .= "<h1 class='titleofablog'>$blogtitle</h1>\n";
+    $txt .= "<h3 class='authorofablog'>$author</h3>\n";
+    $txt .= "<p class='textofablog'>$blogtext</p>\n";
+    $txt .= "<img src='../uploads/$images' alt='uploadedimage' width='200px' class='imageofablog'>\n";
     $txt .=
     "</div>
     </main>
@@ -32,32 +32,32 @@ if(isset($_POST['submitBlog'])){
     fwrite($blogfile, $txt);
     fclose($blogfile);
     $result = $conn->query($sql);
-    if($result == TRUE){
-        echo("New record created succesfully");
-    }else{
+    if($result != TRUE){
         echo("Error:".$sql."<br>".$conn->error);
     }
     $conn->close();
 }
 ?>
-<div class="blogPostBox">
-    <form method="POST" enctype="multipart/form-data">
-        <div class="">
-            <label for="blogTitle">Blog title:</label><br>
-            <input type="text" name="blogTitle" id="blogTitle" placeholder="What's the title of your blog? (special)" required><br>
-            <label for="blogDesc">Blog description:</label><br>
-            <input type="text" name="blogDesc" id="blogDesc" placeholder="Describe your blog" required><br>
-        </div>
-        <label for="blogText">Text:</label><br>
-        <input type="text" name="blogText" id="blogText" placeholder="Context of your blog" required><br>
-        <div>
-            <label for="image">Image:</label><br>
-            <input type="file" name="file" id="file"><br>
-            <br>
-            <input type="submit" name="submitBlog" value="Submit">
-        </div>
-    </form>
-</div>
+<main>
+    <div class="blogPostBox">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="">
+                <label for="blogTitle">Blog title:</label><br>
+                <input type="text" name="blogTitle" id="blogTitle" placeholder="What's the title of your blog? (special)" required><br>
+                <label for="blogDesc">Blog description:</label><br>
+                <input type="text" name="blogDesc" id="blogDesc" placeholder="Describe your blog" required><br>
+            </div>
+            <label for="blogText">Text:</label><br>
+            <input type="text" name="blogText" id="blogText" placeholder="Context of your blog" required><br>
+            <div>
+                <label for="image">Image:</label><br>
+                <input type="file" name="file" id="file"><br>
+                <br>
+                <input type="submit" name="submitBlog" value="Submit">
+            </div>
+        </form>
+    </div>
+</main>
 <?php
 if(isset($_POST['submitBlog'])){
     $fileName = $_FILES['file']['name'];  
