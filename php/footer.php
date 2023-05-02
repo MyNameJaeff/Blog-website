@@ -3,7 +3,7 @@
             <button>Subscribe 1$/month</button>
         </div>
         <div class="websiteBox d-flex align-items-center">
-            <a href="index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
+            <a href="../php/index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
             <div class="websiteText">
                 <p class="text-light">Website description</p>
             </div>

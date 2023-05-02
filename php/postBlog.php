@@ -15,7 +15,7 @@ if(isset($_POST['submitBlog'])){
         $images = "backupimage.png";
     };
     $sql = "INSERT INTO `blogposts`(`author`, `blogtitle`, `blogdescription`, `blogtext`, `images`)
-                        VALUES ('$author', '$blogtitle','$blogdescription', '$blogtext', '../uploads/$images')";
+                        VALUES ('$author', '$blogtitle', '$blogdescription', '$blogtext', '../uploads/$images')";
     $blogfile = fopen("../blogs/$blogtitle.php", "w") or die("Unable to create blog");
     $txt = 
     "<?php include '../php/header.php'; ?>
