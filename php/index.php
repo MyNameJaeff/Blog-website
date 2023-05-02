@@ -22,6 +22,5 @@ include 'blogposter.php';
     </div>
 </main>
 <?php
-
 include 'footer.php';
 ?>
