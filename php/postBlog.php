@@ -11,15 +11,15 @@ if(isset($_POST['submitBlog'])){
     $blogdescription = $_POST['blogDesc'];
     $blogtext = $_POST['blogText'];
     $images = $_FILES['file']['name'];
+    if($images == ""){
+        $images = "backupimage.png";
+    };
     $sql = "INSERT INTO `blogposts`(`author`, `blogtitle`, `blogdescription`, `blogtext`, `images`)
                         VALUES ('$author', '$blogtitle','$blogdescription', '$blogtext', '../uploads/$images')";
     $blogfile = fopen("../blogs/$blogtitle.php", "w") or die("Unable to create blog");
     $txt = 
     "<?php include '../php/header.php'; ?>
     <main>
-    <div>
-    <a href='../php/index.php'>Go back</a>
-    </div>
     <div>";
     $txt .= "<h1 class='titleofablog'>$blogtitle</h1>\n";
     $txt .= "<h3 class='authorofablog'>$author</h3>\n";
@@ -42,18 +42,26 @@ if(isset($_POST['submitBlog'])){
     <div class="blogPostBox">
         <form method="POST" enctype="multipart/form-data">
             <div class="">
-                <label for="blogTitle">Blog title:</label><br>
-                <input type="text" name="blogTitle" id="blogTitle" placeholder="What's the title of your blog? (special)" required><br>
-                <label for="blogDesc">Blog description:</label><br>
-                <input type="text" name="blogDesc" id="blogDesc" placeholder="Describe your blog" required><br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Title:</span><br>
+                    <input type="text" class="form-control" name="blogTitle" id="blogTitle" placeholder="Title? (special)" required><br>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Check</button>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Description:</span><br>
+                    <input type="text" class="form-control" name="blogDesc" id="blogDesc" placeholder="Description" required><br>
+                </div>
             </div>
-            <label for="blogText">Text:</label><br>
-            <input type="text" name="blogText" id="blogText" placeholder="Context of your blog" required><br>
+            <div class="input-group">
+                <span class="input-group-text">Text:</span><br>
+                <textarea style="width:500px;" class="form-control" type="text" name="blogText" id="blogText" placeholder="Context of your blog" required></textarea><br>
+            </div><br>
             <div>
-                <label for="image">Image:</label><br>
-                <input type="file" name="file" id="file"><br>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="file" id="inputGroupFile02 file">
+                </div>
                 <br>
-                <input type="submit" name="submitBlog" value="Submit">
+                <input type="submit" class="btn btn-outline-primary" name="submitBlog" value="Submit">
             </div>
         </form>
     </div>
