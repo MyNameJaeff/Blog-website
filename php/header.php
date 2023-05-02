@@ -13,7 +13,11 @@
         <div class="dropdown">
             <button onclick="popMenu()" class="btn dropbtn" style=""><img src="../images/menu.png" alt="huh" width="50" height="50" style="pointer-events:none;"></button>
             <div id="myDropdown" class="dropdown-content">
-                <a href="postBlog.php">Blog</a>
+                <?php
+                if(isset($_COOKIE['user'])){
+                    echo '<a href="postBlog.php">Blog</a>';
+                }
+                ?>
                 <a href="allblogs.php">All blogs</a>
                 <?php
                 if(isset($_COOKIE['user'])){
