@@ -35,7 +35,7 @@ if(isset($_POST["login"])){
     $sql = "SELECT * FROM logins WHERE email='$userinfo' OR username='$userinfo' AND passwrd='$password'";
     $results = mysqli_query($conn, $sql);
     if(!empty(mysqli_num_rows($results))){
-        setcookie("user", $userinfo);
+        $_SESSION['user'] = $userinfo;
         echo "<script>window.location.href='userpage.php';</script>";
     }else{
         echo("Wrong");

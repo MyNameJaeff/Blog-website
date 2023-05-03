@@ -4,8 +4,8 @@ include 'blogposter.php';
 ?>
 
 <?php
-if(isset($_COOKIE['user'])){
-    $user = $_COOKIE['user'];
+if(isset($_SESSION['user'])){
+    $user = $_SESSION['user'];
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT * FROM logins WHERE username='$user'";
     $result = $conn->query($sql);

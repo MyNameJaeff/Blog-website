@@ -14,13 +14,17 @@
             <button onclick="popMenu()" class="btn dropbtn" style=""><img src="../images/menu.png" alt="huh" width="50" height="50" style="pointer-events:none;"></button>
             <div id="myDropdown" class="dropdown-content" style="position:absolute; z-index:2;">
                 <?php
-                if(isset($_COOKIE['user'])){
+                session_start();
+                if($_SERVER['REQUEST_URI'] != "/phpstuff/blog-hemsidan/php/searchpage.php"){
+                    unset($_SESSION['seachterm']);
+                }
+                if(isset($_SESSION['user'])){
                     echo '<a href="../php/postBlog.php">Blog</a>';
                 }
                 ?>
                 <a href="../php/allblogs.php">All blogs</a>
                 <?php
-                if(isset($_COOKIE['user'])){
+                if(isset($_SESSION['user'])){
                     echo "<a href='../php/userpage.php'>User page</a>";
                     echo('
                     <form method="post">
@@ -31,8 +35,7 @@
                     echo '<a href="../php/registerpage.php">Register</a>';
                 }
                 if(isset($_POST["logout"])){
-                    unset($_COOKIE["user"]);
-                    setcookie('user', NULL);
+                    unset($_SESSION["user"]);
                     echo "<script>window.location.href='../php/index.php';</script>";
                 }
                 ?>
@@ -40,10 +43,17 @@
         </div>
         <a href="../php/index.php"><img src="../images/huh.png" alt="huh" width="50" height="50"></a>
         <div class="search">
-            <form method="POST">
-                <input type="text" name="search" placeholder="Search...">
-                <a href=""><img src="../images/searchglass.png" alt="huh" width="30" height="30"></a>
+            <form method="POST" class="d-flex">
+                <input type="text" name="search" placeholder="Search... (specific)" required>
+                <button type="submit" name="searchSubmit" style="padding: 0; border: none; background-color:unset;"><img src="../images/searchglass.png" width="35" height="35"/></button>
             </form>
+            <?php
+            if(isset($_POST['searchSubmit'])){
+                $searchterm = $_POST['search'];
+                $_SESSION['searchterm'] = $searchterm;
+                echo "<script>window.location.href='../php/searchpage.php';</script>";
+            }
+            ?>
         </div>
     </header>
     <script>

@@ -1,12 +1,12 @@
 <?php
 include 'header.php';
 include 'blogposter.php';
-if(!isset($_COOKIE['user'])){
+if(!isset($_SESSION['user'])){
     echo "<script>window.location.href='loginpage.php';</script>";
 }
 if(isset($_POST['submitBlog'])){
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $author = $_COOKIE["user"];   
+    $author = $_SESSION["user"];   
     $blogtitle = $_POST['blogTitle'];
     $blogdescription = $_POST['blogDesc'];
     $blogtext = $_POST['blogText'];
@@ -18,7 +18,7 @@ if(isset($_POST['submitBlog'])){
                         VALUES ('$author', '$blogtitle', '$blogdescription', '$blogtext', '../uploads/$images')";
     $blogfile = fopen("../blogs/$blogtitle.php", "w") or die("Unable to create blog");
     $txt = 
-    "<?php include '../php/header.php'; ?>
+    "<?php include '../php/header.php'; include '../php/blogposter.php';?>
     <main>
     <div>";
     $txt .= "<h1 class='titleofablog'>$blogtitle</h1>\n";
@@ -38,14 +38,13 @@ if(isset($_POST['submitBlog'])){
     $conn->close();
 }
 ?>
-<main>
-    <div class="blogPostBox">
-        <form method="POST" enctype="multipart/form-data">
+<main class="bd-main order-1">
+    <div class="blogPostBox" style="width:40%">
+        <form method="POST" enctype="multipart/form-data" style="width:100%">
             <div class="">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Title:</span><br>
                     <input type="text" class="form-control" name="blogTitle" id="blogTitle" placeholder="Title? (special)" required><br>
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Check</button>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Description:</span><br>
@@ -64,6 +63,18 @@ if(isset($_POST['submitBlog'])){
                 <input type="submit" class="btn btn-outline-primary" name="submitBlog" value="Submit">
             </div>
         </form>
+        <form method="post">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Title:</span><br>
+                <input type="text" class="form-control" name="blogTitle" id="blogTitle" placeholder="Title? (special)" required><br>
+                <input type="submit" class="btn btn-outline-primary" name="checker" value="Submit">
+            </div>
+        </form>
+        <?php
+        if(isset($_POST['checker'])){
+            echo("AMONG");
+        }
+        ?>
     </div>
 </main>
 <?php

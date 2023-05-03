@@ -1,4 +1,4 @@
-    <footer class="d-flex justify-content-around align-items-center" style="background-color: black; height:100px;">
+    <footer class="d-flex justify-content-around align-items-center" style="background-color: black; height:100px; margin-top:50%">
         <div class="subscribeBox">
             <button>Subscribe 1$/month</button>
         </div>

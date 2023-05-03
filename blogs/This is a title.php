@@ -1,4 +1,4 @@
-<?php include '../php/header.php'; ?>
+<?php include '../php/header.php'; include '../php/blogposter.php';?>
     <main>
     <div><h1 class='titleofablog'>This is a title</h1>
 <h3 class='authorofablog'>Username</h3>
