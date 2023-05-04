@@ -9,23 +9,26 @@ if(isset($_SESSION['user'])){
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT * FROM logins WHERE username='$user'";
     $result = $conn->query($sql);
+    echo "<div class='d-flex align-items-center userprofilepagetop'>";
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo("<p class='usersusername'>".$row['username']."</p><br>");
             echo("<img src='".$row['profilepicture']."' class='userprofilepic' width='200px'>");
+            echo("<p class='usersusername'>".$row['username']."</p>");
         }
     }
+    echo "</div>";
     echo "<hr style='border: 3px solid black'>";
-    echo "<h2>All of $user's blogs: </h2>";
+    echo("<div class='container containerallposts'>");
+    echo "<h4 style='text-decoration:underline;'>All of $user's blogs: </h4>";
     $sql = "SELECT * FROM blogposts WHERE author='$user'";
     $result = $conn->query($sql);
-    $table = "<div class='allposts d-flex'>";
+    $table = "<div class='allposts d-flex row row-cols-4'>";
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            $table .= "<a href='../blogs/".$row["blogtitle"].".php' color='black'><div>" . "<img src='" .
-            $row["images"] . "' alt='uploadedImage' width='50' height='50'><h3>" .
-            $row["author"] . "</h3>" . "<h2>" .
-            $row["blogtitle"] . "</h2><p>" . 
+            $table .= "<a href='../blogs/".$row["blogtitle"].".php' color='black'><div class='col'>" . "<img src='" .
+            $row["images"] . "' alt='uploadedImage' width='100' height='100'><h5>" .
+            $row["author"] . "</h5>" . "<h4>" .
+            $row["blogtitle"] . "</h4><p>" . 
             $row["blogdescription"] . "</p></div><br></a>";
         }
     }else{
@@ -33,6 +36,7 @@ if(isset($_SESSION['user'])){
     }
     $table .= "</div>";
     echo $table;
+    echo "</div>";
     $conn->close();
 
 }
