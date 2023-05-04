@@ -2,27 +2,27 @@
 include "header.php";
 include "blogposter.php";
 ?>
-<main>
-    <form method="post" enctype="multipart/form-data">
-        <div>
+<main class="registerpage">
+    <form method="post" enctype="multipart/form-data" class="registerform">
+        <div class="registusernames">
             <label for="username">Username</label><br>
             <input type="text" class="username" name="username" required>
         </div>
-        <div>
+        <div class="registeremail">
             <label for="email">Email</label><br>
             <input type="email" class="email" name="email" required>
         </div>
-        <div>
+        <div class="registerpassword">
             <label for="password">Password</label><br>
             <input type="password" class="password" name="password" required><br>
             <label for="repeatpassword">Repeat the password</label><br>
             <input type="password" class="password" name="repeatpassword" required>
         </div>
-        <div>
+        <div class="registerprofilepic">
             <label for="profilepic">Profile picture</label><br>
             <input type="file" class="profilepic" name="profilepic" accept="image/png, image/jpeg">
         </div><br>
-        <input type="submit" value="Register" name="register">
+        <input type="submit" value="Register" name="register" class="registersubmit">
     </form>
 </main>
 <?php
@@ -48,7 +48,7 @@ if(isset($_POST['register'])){
                 $location = '../uploads/';
                 move_uploaded_file($temp_name, $location.$profilepic);
                 $_SESSION["user"] = $username;
-                header("userpage.php");
+                echo "<script>window.location.href='userpage.php';</script>";
             }else{
                 echo("Error:".$sql."<br>".$conn->error);
             }

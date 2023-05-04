@@ -21,8 +21,29 @@ footer{
 .logoutbutton{
   width:100%; 
 }
-
-
+.userprofilepic{
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+.usersusername{
+  margin-left: 1%;
+  font-size: 2em;
+  font-weight: bold;
+}
+.userprofilepagetop{
+  margin-left: 5%;
+  margin-top: 1%;
+}
+.registerpage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.registerform{
+  display: flex;
+  flex-direction: column;
+}
 /* Dropdown Button */
 .dropbtn {
   border: none;

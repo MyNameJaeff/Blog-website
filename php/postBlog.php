@@ -19,10 +19,10 @@ if(isset($_POST['submitBlog'])){
     $blogfile = fopen("../blogs/$blogtitle.php", "w") or die("Unable to create blog");
     $txt = 
     "<?php include '../php/header.php'; include '../php/blogposter.php';?>
-    <main>
-    <div>";
+    <main class='ablogmain'>
+    <div class='ablogdiv'>";
     $txt .= "<h1 class='titleofablog'>$blogtitle</h1>\n";
-    $txt .= "<h3 class='authorofablog'>$author</h3>\n";
+    $txt .= "<a href='#' style='font-size:1.2em;' class='authorofablog'>$author</a>\n";
     $txt .= "<p class='textofablog'>$blogtext</p>\n";
     $txt .= "<img src='../uploads/$images' alt='uploadedimage' width='200px' class='imageofablog'>\n";
     $txt .=
