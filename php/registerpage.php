@@ -39,6 +39,7 @@ if(isset($_POST['register'])){
     $results = mysqli_query($conn, $sql);
     if(empty(mysqli_num_rows($results))){
         if($password == $repeatpassword){
+            $password = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO `logins`(`username`, `email`, `passwrd`, `profilepicture`)
                                 VALUES ('$username', '$email','$password', '../uploads/$profilepic')";
             $result = $conn->query($sql);

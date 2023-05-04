@@ -32,13 +32,18 @@ if(isset($_POST["login"])){
     $password = $_POST["password"];
     $conn = new mysqli($servername, "root", "", $dbname);
 
-    $sql = "SELECT * FROM logins WHERE email='$userinfo' OR username='$userinfo' AND passwrd='$password'";
+    $sql = "SELECT * FROM logins WHERE email='$userinfo' OR username='$userinfo'";
     $results = mysqli_query($conn, $sql);
     if(!empty(mysqli_num_rows($results))){
-        $_SESSION['user'] = $userinfo;
-        echo "<script>window.location.href='userpage.php';</script>";
+        while($row = $result->fetch_assoc()){
+            if(password_verify($password, $row['passwrd'])){
+                $_SESSION['user'] = $userinfo;
+                echo "<script>window.location.href='userpage.php';</script>";
+            }
+        }
+        echo "Wrong password";
     }else{
-        echo("Wrong");
+        echo("Wrong username or email");
     }
 }
 include "footer.php";

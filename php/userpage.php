@@ -4,8 +4,14 @@ include 'blogposter.php';
 ?>
 
 <?php
-if(isset($_SESSION['user'])){
-    $user = $_SESSION['user'];
+$statement1 = isset($_SESSION['user']);
+$statement2 = isset($_SESSION['tempuser']);
+if($statement1 OR $statement2){
+    if($statement1){
+        $user = $_SESSION['user'];
+    }else{
+        $user = $_SESSION['tempuser'];
+    }
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT * FROM logins WHERE username='$user'";
     $result = $conn->query($sql);
@@ -25,7 +31,7 @@ if(isset($_SESSION['user'])){
     $table = "<div class='allposts d-flex row row-cols-4'>";
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            $table .= "<a href='../blogs/".$row["blogtitle"].".php' color='black'><div class='col'>" . "<img src='" .
+            $table .= "<a href='../blogs/".$row["blogtitle"].".php' color='black' style='border:1px solid black; border-radius:2%; padding:1%; background-color:#fafafa;'><div class='col'>" . "<img src='" .
             $row["images"] . "' alt='uploadedImage' width='100' height='100'><h5>" .
             $row["author"] . "</h5>" . "<h4>" .
             $row["blogtitle"] . "</h4><p>" . 

@@ -9,7 +9,7 @@
     <title>Blog website</title>
 </head>
 <body>
-    <header class="d-flex justify-content-between align-items-center" style="border-bottom:1px solid black; padding:1px;">
+    <header class="d-flex justify-content-between align-items-center" style="border-bottom:1px solid black; padding:1px; background-color:#fafafa;">
         <div class="dropdown">
             <button onclick="popMenu()" class="btn dropbtn" style=""><img src="../images/menu.png" alt="huh" width="50" height="50" style="pointer-events:none;"></button>
             <div id="myDropdown" class="dropdown-content" style="position:absolute; z-index:2;">
@@ -17,6 +17,9 @@
                 session_start();
                 if($_SERVER['REQUEST_URI'] != "/phpstuff/blog-hemsidan/php/searchpage.php"){
                     unset($_SESSION['seachterm']);
+                }
+                if($_SERVER['REQUEST_URI'] != "/phpstuff/blog-hemsidan/php/userpage.php"){
+                    unset($_SESSION['tempuser']);
                 }
                 if(isset($_SESSION['user'])){
                     echo '<a href="../php/postBlog.php">Blog</a>';
