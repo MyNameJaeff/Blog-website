@@ -4,14 +4,14 @@ include 'blogposter.php';
 ?>
 
 <?php
-$statement1 = isset($_SESSION['user']);
-$statement2 = isset($_SESSION['tempuser']);
-if($statement1 OR $statement2){
-    if($statement1){
-        $user = $_SESSION['user'];
-    }else{
-        $user = $_SESSION['tempuser'];
-    }
+if(isset($_SESSION['tempuser'])){
+    $user = $_SESSION['tempuser'];
+    $true = true;
+}else if(isset($_SESSION['user'])){
+    $user = $_SESSION['user'];
+    $true = true;
+}
+if($true){
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT * FROM logins WHERE username='$user'";
     $result = $conn->query($sql);
@@ -44,7 +44,7 @@ if($statement1 OR $statement2){
     echo $table;
     echo "</div>";
     $conn->close();
-
+    unset($_SESSION['tempuser']);
 }
 ?>
 

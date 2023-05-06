@@ -33,6 +33,9 @@ if(isset($_POST['register'])){
     $password = $_POST['password'];
     $repeatpassword = $_POST['repeatpassword'];
     $profilepic = $_FILES['profilepic']['name'];
+    if(empty($profilepic)){
+        $profilepic = "backupimage.png";
+    }
     $conn = new mysqli($servername, "root", "", $dbname);
     
     $sql = "SELECT * FROM logins WHERE email='$email'";

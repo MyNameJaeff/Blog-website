@@ -21,14 +21,21 @@ if(isset($_POST['submitBlog'])){
     "<?php include '../php/header.php'; include '../php/blogposter.php';?>
     <main class='ablogmain'>
     <div class='ablogdiv'>";
-    $txt .= "<h1 class='titleofablog'>$blogtitle</h1>\n";
-    $txt .= "<a href='?link=1' style='font-size:1.2em;' class='authorofablog'>$author</a>\n";
+    $txt .= "<p class='titleofablog' name='blogtitlespecific'>$blogtitle</p>\n";
+    $txt .= "<form method='post' class='d-flex flex-column'>
+                <input type='submit' value='$author' name='userprfile' style='width:fit-content;'>
+             </form>\n";
     $txt .= "<p class='textofablog'>$blogtext</p>\n";
     $txt .= "<img src='../uploads/$images' alt='uploadedimage' width='200px' class='imageofablog'>\n";
     $txt .=
     '</div>
     </main>
-    <?php $link = $_GET["link"]; if($link == "1"){ echo "A"; } include "../php/footer.php"; ?>';
+    <?php if(isset($_POST["userprfile"])){
+        unset($_SESSION["tempuser"]);
+        $_SESSION["tempuser"] = $_POST["userprfile"];
+        echo "<script>window.location.href='."'../php/userpage.php'".';</script>";
+    } 
+    include "../php/footer.php"; ?>';
     fwrite($blogfile, $txt);
     fclose($blogfile);
     $result = $conn->query($sql);
