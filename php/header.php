@@ -15,10 +15,10 @@
             <div id="myDropdown" class="dropdown-content" style="position:absolute; z-index:2;">
                 <?php
                 session_start();
-                if($_SERVER['REQUEST_URI'] != "/phpstuff/blog-hemsidan/php/searchpage.php"){
+                if($_SERVER['REQUEST_URI'] != "/blog-hemsidan/php/searchpage.php"){
                     unset($_SESSION['seachterm']);
                 }
-                if($_SERVER['REQUEST_URI'] != "/phpstuff/blog-hemsidan/php/userpage.php"){
+                if($_SERVER['REQUEST_URI'] != "/blog-hemsida/php/userpage.php"){
                     unset($_SESSION['tempuser']);
                 }
                 if(isset($_SESSION['user'])){
