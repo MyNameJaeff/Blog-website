@@ -46,6 +46,7 @@ if(isset($_POST['register'])){
             $sql = "INSERT INTO `logins`(`username`, `email`, `passwrd`, `profilepicture`)
                                 VALUES ('$username', '$email','$password', '../uploads/$profilepic')";
             $result = $conn->query($sql);
+            echo("A");
             if($result == TRUE){
                 echo("New record created succesfully");
                 $temp_name = $_FILES['profilepic']['tmp_name'];
