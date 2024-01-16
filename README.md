@@ -2,7 +2,7 @@
 This was a task during my 3rd year at NTI Södertörn. It was about creating a blog webite
 
 ## Requirements
-The requirements for this project was to make a blog website where a user could login/register and if they did they would gain the ability to create a blog-post that had a title, description, text and an image
+The requirements for this project was to make a blog website where a user could login/register and if they did they would gain the ability to create a blog-post that had a title, description, text and an image. If the user registered/blogged the data was to be sent to a SQL databse, while the image was to be uploaded to the computer due to SQL not having image storing. Instead the image was to be converted to a relative link. 
 
 ## Extra function
 Because i had some time over from making the required functions of the website so i chose to use that time to add a few extra functions instead of styling the website.
