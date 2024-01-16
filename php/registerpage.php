@@ -37,6 +37,7 @@ if(isset($_POST['register'])){
         $profilepic = "backupimage.png";
     }
     $conn = new mysqli($servername, "root", "", $dbname);
+    echo $conn->connect_error;
     
     $sql = "SELECT * FROM logins WHERE email='$email'";
     $results = mysqli_query($conn, $sql);
@@ -46,6 +47,7 @@ if(isset($_POST['register'])){
             $sql = "INSERT INTO `logins`(`username`, `email`, `passwrd`, `profilepicture`)
                                 VALUES ('$username', '$email','$password', '../uploads/$profilepic')";
             $result = $conn->query($sql);
+            echo($conn->error);
             echo("A");
             if($result == TRUE){
                 echo("New record created succesfully");
