@@ -1,4 +1,4 @@
-# Blog-Hemsidan
+# Blog-website
 This was a task during my 3rd year at NTI Södertörn. It was about creating a blog webite
 
 ## Requirements
